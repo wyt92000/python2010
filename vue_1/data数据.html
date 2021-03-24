@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <h2>{{ message }}</h2>
+
+    <h2>{{age *2 }}</h2>
+
+    <h1>用户名：{{ user.username }}, 密码：{{user.password}}</h1>
+
+    <h2>{{ arr[0] }}</h2>
+
+    <h1>{{ user_list[0].username }}</h1>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            // 字符串
+            message: "小小兵欢迎你！！",
+            // 数字
+            age: 23,
+            // 对象
+            user: {"username": "李保安", password: "123456"},
+            // 数组
+            arr: ["河南", "北京", "天津"],
+            // 数组中包含对象
+            user_list: [{"username": "可可", password: "5545466"}, {"username": "答案网", password: "123456"},]
+        }
+    })
+
+</script>
+
+</body>
+</html>

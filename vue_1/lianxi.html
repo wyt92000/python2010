@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+   <style>
+        .aa {
+            border: 2px blue solid;
+        }
+    </style>
+<body>
+<div id="app">
+
+    <h2>{{ message }}</h2>
+
+    <h2>{{age *2 }}</h2>
+
+    <h1>用户名：{{ user.username }}, 密码：{{user.password}}</h1>
+
+    <h2>{{ arr[0] }}</h2>
+
+    <h1>{{ user_list[0].username }}</h1>
+
+</div>
+<div id="app1">
+    <img :src="src" alt="" :title="title" :class="{aa:showCss}">
+    <hr>
+    <input type="button" value="动态切换图片样式" @click="addCss">
+    <input type="button" value="切换图片" @click="changeImg">
+
+</div>
+<div id="app2">
+
+    <h3>{{ user.name}} {{user.age}} {{user.bir}}</h3>
+    <hr>
+
+
+    <span v-for="(value, key, index) in user">
+        {{key}}：{{value}} === {{index}}
+    </span>
+
+
+    <ul>
+        <li v-for="(city, index) in arr">{{index+1}}--{{city}}</li>
+    </ul>
+
+
+    <ul>
+        <li v-for="(emp, index) in emp_list">
+            {{index+1}}--{{ emp.name }}=={{emp.age}}=={{emp.bir}}
+        </li>
+    </ul>
+
+    <table cellspacing="1" border="1px">
+        <tr>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>生日</td>
+        </tr>
+        <tr v-for="(emp, index) in emp_list" :key="index">
+            <td>{{index+1}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.age}}</td>
+            <td>{{emp.bir}}</td>
+        </tr>
+    </table>
+
+</div>
+<div id="app6">
+
+    <p @click="low_num">{{num}}</p>
+    <p>十位：{{parseInt(num /10)}}</p>
+    <p>个位：{{num%10}}</p>
+    <hr>
+    十位：<input type="text" v-model="ten">
+    个位：<input type="text" v-model="bits">
+    结果：<p>{{ result }}</p>
+
+</div>
+<div id="app3">
+
+    <h3 v-if="true">教育</h3>
+
+    <h2 v-else>欢迎你</h2>
+
+    <h1 v-else-if="true">加入</h1>
+
+</div>
+<div id="app5">
+
+    <h3>{{ count }}</h3>
+
+    <input type="button" value="改变count的值" @click="change_count(88, 'tom')">
+
+    <hr>
+
+    <span @click="click_me">点击我</span>
+    <hr>
+    <span @click="click_me2()">点击我2</span>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            message: "欢迎你！！",
+            age: 23,
+            user: {"username": "王禹桐", password: "123456"},
+            arr: ["石家庄", "北京", "上海"],
+            user_list: [{"username": "hs", password: "000530"}, {"username": "当当网", password: "000530"},]
+        }
+    })
+    new Vue({
+        el: "#app1",
+        data: {
+            title: "二哈",
+            showCss: true,
+            src: "https://p3.ssl.qhimgs1.com/t019256895d8268c99d.jpg"
+        },
+        methods: {
+            addCss() {
+                this.showCss = !this.showCss;
+            },
+
+            changeImg() {
+                this.src = "https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3469716026,2816395410&fm=26&gp=0.jpg"
+            },
+        }
+    })
+     new Vue({
+        el: "#app2",
+        data: {
+            user: {name: "隔壁老王", age: 25, bir: "1999-01-01"},
+            arr: ["北京", "上海", "广州"],
+            emp_list: [
+                {name: "老王1", age: 20, bir: "2000-01-01"},
+                {name: "老王2", age: 25, bir: "1995-01-01"},
+                {name: "老王3", age: 50, bir: "1975-01-01"},
+            ],
+        },
+    })
+
+    new Vue({
+        el: "#app4",
+        data: {},
+    })
+     new Vue({
+        el: "#app5",
+        data: {
+            count: 20
+        },
+        methods: {
+            change_count(number, name) {
+                console.log(name);
+                this.count = number;
+            },
+            click_me() {
+                console.log(event);
+            },
+            click_me2(event) {
+                console.log(event);
+            },
+        }
+    })
+    new Vue({
+        el: "#app6",
+        data: {
+            num: 95,
+            ten: "",
+            bits: "",
+        },
+        methods: {
+            low_num() {
+                this.num -= 3;
+            },
+        },
+
+        computed: {
+            result() {
+                return this.ten * 10 + +this.bits;
+            },
+        }
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <!--
+      1. 在页面中提供点击的按钮
+      2. 给按钮绑定事件  onclick  onkeyup
+      3. 在单击事件触发的方法中修改年龄的值  渲染页面
+      -->
+
+    <h3>{{ age }}</h3>
+
+    <!-- 为按钮绑定事件  v-on:触发事件方法="你要绑定的方法"   -->
+    <!--  在vue中 方法要在vue中使用methods关键字定义在实例范围中  -->
+    <input type="button" value="点我变得更年轻" v-on:click="change_age">
+
+</div>
+
+<script src="js/vue.min.js"></script>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            age: 50,
+        },
+        // 在vue实例中，所有的方法都放在methods中
+        methods: {  // 用来定义vue中的事件
+            change_age: function () {
+                // 获取到vue实例中的年龄并减少
+                // 在事件函数中this就是当前vue的实例
+                console.log(this.age)
+                // this.age = this.age - 1;
+                this.age--;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

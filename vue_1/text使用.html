@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <span>{{message}}, 欢迎大家跟我进行学习Vue</span>
+    <hr>
+    <!-- v-text="data中定义好的变量"  覆盖标签内部原有的值   -->
+    <span v-text="message">欢迎大家跟我进行学习Vue</span>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message: "hello Vue",
+        }
+    })
+</script>
+
+</body>
+</html>
